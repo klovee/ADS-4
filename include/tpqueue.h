@@ -11,53 +11,69 @@ class TPQueue {
     int size;
     int begin, end;
     int count;
+    int stepBack(int index) {
+    int res = --index;
+    if (res < 0)
+        res += size + 1;
+    return res;
+  }
+    int stepForward(int index) {
+    int res = ++index;
+    if (res > size)
+        res -= size + 1;
+    return res;
+  }
+
  public:
-explicit TPQueue(int = 100);
-~TPQueue();
-void push(const T &);
-    T pop();
-    T get() const;
-    bool isFull() const;
-    bool isEmpty() const;
-};
+  TPQueue() :
+    size(100),
+    begin(0), end(0), count(0) {
+    arr = new T[size + 1];
+    }
+    ~TPQueue() {
+      delete[] arr;
+    }
 
 // функция добавления элемента в очередь
 template<typename T>
 void TQueue<T>::push(const T & item)
 {
     assert( count < size );
- 
-    arr[end++] = item;
+    int tmp = end;
+    while (arr[stepBack(tmp)].prior < begin != tmp && item.prior) {
+        tmp = stepBack(tmp);
+        arr[tmp] = arr[stepBack(tmp)];
+    }
+    end = stepForward(end);
+    arr[tmp] = item;
     count++;
-
-
-    if (end > size)
-        end -= size + 1; // возвращаем end на начало очереди
-}
+  }
 
 template<typename T>
 T TPQueue<T>::pop() {
         assert(count > 0);
-        T item = arr[begin++];
+        T item = arr[begin];
         count--;
-        if (begin > size)
-                begin -= size + 1;
+        begin = stepForward(begin);
         return item;
 }
+  
 template<typename T>
 T TPQueue<T>::get() const {
         assert(count > 0);
         return arr[begin];
 }
+
 template<typename T>
 bool TPQueue<T>::isEmpty() const {
         return count == 0;
 }
+
 template<typename T>
 bool TPQueue<T>::isFull() const {
         return count == size;
 }
-
+  
 struct SYM {
   char ch;
   int  prior;
