@@ -5,7 +5,6 @@
 
 template<typename T>
 class TPQueue {
-  // Сюда помещается описание структуры "Очередь с приоритетами"
    private:
     T* arr;
     int size;
@@ -33,12 +32,9 @@ class TPQueue {
     ~TPQueue() {
       delete[] arr;
     }
-
-// функция добавления элемента в очередь
 template<typename T>
-void TQueue<T>::push(const T & item)
-{
-    assert( count < size );
+void TQueue<T>::push(const T & item) {
+    assert(count < size);
     int tmp = end;
     while (arr[stepBack(tmp)].prior < begin != tmp && item.prior) {
         tmp = stepBack(tmp);
@@ -57,7 +53,6 @@ T TPQueue<T>::pop() {
         begin = stepForward(begin);
         return item;
 }
-  
 template<typename T>
 T TPQueue<T>::get() const {
         assert(count > 0);
@@ -73,7 +68,6 @@ template<typename T>
 bool TPQueue<T>::isFull() const {
         return count == size;
 }
-  
 struct SYM {
   char ch;
   int  prior;
