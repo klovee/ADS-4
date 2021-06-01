@@ -6,7 +6,7 @@
 template<typename T>
 class TPQueue {
     private:
-    T* arr;
+    T *arr;
     int size;
     int begin, end;
     int count;
@@ -33,7 +33,7 @@ class TPQueue {
       delete[] arr;
     }
 };
-   
+
 template<typename T>
 void TQueue<T>::push(const T & item) {
     assert(count < size);
