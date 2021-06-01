@@ -4,7 +4,8 @@
 #include <cassert>
 
 template<typename T>
-class TPQueue {
+class TPQueue 
+{
     private:
     T *arr;
     int size;
@@ -32,7 +33,6 @@ class TPQueue {
     ~TPQueue() {
       delete[] arr;
     }
-};
 
 template<typename T>
 void TQueue<T>::push(const T & item) {
