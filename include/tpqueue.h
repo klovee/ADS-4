@@ -4,8 +4,8 @@
 #include <cassert>
 
 template<typename T>
-class TPQueue { 
-    private: 
+class TPQueue {
+ private: 
     T *arr;
     int size;
     int begin, end;
