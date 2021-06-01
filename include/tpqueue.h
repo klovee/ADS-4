@@ -32,10 +32,8 @@ class TPQueue {
     ~TPQueue() {
       delete[] arr;
     }
-};
 
-template<typename T>
-void TQueue<T>::push(const T & item) {
+void push(const T & item) {
     assert(count < size);
     int tmp = end;
     while (arr[stepBack(tmp)].prior < begin != tmp && item.prior) {
@@ -47,29 +45,27 @@ void TQueue<T>::push(const T & item) {
     count++;
   }
 
-template<typename T>
-T TPQueue<T>::pop() {
+T pop() {
         assert(count > 0);
         T item = arr[begin];
         count--;
         begin = stepForward(begin);
         return item;
 }
-template<typename T>
-T TPQueue<T>::get() const {
+
+T get() const {
         assert(count > 0);
         return arr[begin];
 }
 
-template<typename T>
-bool TPQueue<T>::isEmpty() const {
+bool isEmpty() const {
         return count == 0;
 }
 
-template<typename T>
-bool TPQueue<T>::isFull() const {
+bool isFull() const {
         return count == size;
 }
+};
 
 struct SYM {
   char ch;
