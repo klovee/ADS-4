@@ -4,9 +4,8 @@
 #include <cassert>
 
 template<typename T>
-class TPQueue 
-{
-    private:
+class TPQueue {
+    private: 
     T *arr;
     int size;
     int begin, end;
@@ -23,7 +22,6 @@ class TPQueue
         res -= size + 1;
     return res;
   }
-
  public:
   TPQueue() :
     size(100),
@@ -33,6 +31,7 @@ class TPQueue
     ~TPQueue() {
       delete[] arr;
     }
+};
 
 template<typename T>
 void TQueue<T>::push(const T & item) {
@@ -70,6 +69,7 @@ template<typename T>
 bool TPQueue<T>::isFull() const {
         return count == size;
 }
+
 struct SYM {
   char ch;
   int  prior;
