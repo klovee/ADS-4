@@ -33,7 +33,7 @@ class TPQueue {
       delete[] arr;
     }
 
- void push(const T &item) {
+  void push(const T &item) {
     assert(count < size);
     int cur = end;
     while (begin != cur && item.prior > arr[stepBack(cur)].prior) {
