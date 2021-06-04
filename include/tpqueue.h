@@ -33,38 +33,38 @@ class TPQueue {
       delete[] arr;
     }
 
-void push(const T & item) {
+ void push(const T &item) {
     assert(count < size);
-    int tmp = end;
+    int cur = end;
     while (begin != cur && item.prior > arr[stepBack(cur)].prior) {
         arr[cur] = arr[stepBack(cur)];
         cur = stepBack(cur);
     }
+    arr[cur] = item;
     end = stepForward(end);
-    arr[tmp] = item;
     count++;
   }
 
-T pop() {
-        assert(count > 0);
-        T item = arr[begin];
-        count--;
-        begin = stepForward(begin);
-        return item;
-}
+  T pop() {
+    assert(count > 0);
+    T item = arr[begin];
+    count--;
+    begin = stepForward(begin);
+    return item;
+  }
 
-T get() const {
-        assert(count > 0);
-        return arr[begin];
-}
+  T get() const {
+    assert(count > 0);
+    return arr[begin];
+  }
 
-bool isEmpty() const {
-        return count == 0;
-}
+  bool isEmpty() const {
+    return count == 0;
+  }
 
-bool isFull() const {
-        return count == size;
-}
+  bool isFull() const {
+    return count == size;
+  }
 };
 
 struct SYM {
