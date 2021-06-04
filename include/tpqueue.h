@@ -36,9 +36,9 @@ class TPQueue {
 void push(const T & item) {
     assert(count < size);
     int tmp = end;
-    while (arr[stepBack(tmp)].prior < begin != tmp && item.prior) {
-        tmp = stepBack(tmp);
-        arr[tmp] = arr[stepBack(tmp)];
+    while (begin != cur && item.prior > arr[stepBack(cur)].prior) {
+        arr[cur] = arr[stepBack(cur)];
+        cur = stepBack(cur);
     }
     end = stepForward(end);
     arr[tmp] = item;
